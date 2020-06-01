@@ -1,0 +1,72 @@
+[
+  {
+    "name":"andrei",
+    "expenses":[
+      {
+        "date":1590416721895,
+        "cost":500,
+        "type":"Food",
+        "comment":"Comm1"
+
+      },
+      {
+        "date":1590416721895,
+        "cost":500,
+        "type":"Food",
+        "comment":"Comm1"
+
+      },
+      {
+        "date":1590416721895,
+        "cost":500,
+        "type":"Food",
+        "comment":"Comm1"
+
+      },
+      {
+        "date":1590416721895,
+        "cost":500,
+        "type":"Internet",
+        "comment":"Comm1"
+
+      },
+      {
+        "date":1590416721895,
+        "cost":500,
+        "type":"Internet",
+        "comment":"Comm1"
+
+      },
+      {
+        "date":1590416721895,
+        "cost":300,
+        "type":"Internet",
+        "comment":"Comm2"
+
+      }
+
+    ]
+
+  },
+  {
+    "name":"daniel",
+    "expenses":[
+      {
+        "date":1590416735529,
+        "cost":344,
+        "type":"Internet",
+        "comment":"Comm3"
+
+      },
+      {
+        "date":1590416735529,
+        "cost":300,
+        "type":"Internet",
+        "comment":"Comm2"
+
+      }
+
+    ]
+
+  }
+]
