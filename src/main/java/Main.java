@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.OptionalInt;
 import model.Expense;
 import model.User;
 import util.ExpenseTypes;
@@ -48,7 +49,8 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Total: " + choiceOfFiltering().intValue());
+//                    System.out.println("Total: " + totalWithFilter().intValue());
+                    System.out.println(dayWithTheBiggestExpense());
                     break;
                 case 9:
                     User user = new User(username, expenseList);
@@ -114,12 +116,12 @@ public class Main {
         return date;
     }
 
-    private static Integer choiceOfFiltering() throws IOException {
-//        System.out.println("    -> Would you like to filter?(Y/N)");
+    // totalul unor proprietati cu anumite valori
+    private static Integer totalWithFilter() throws IOException {
         boolean flag = true;
 
         while (flag){
-            System.out.println("    -> Would you like to filter?(Y/N)");
+            System.out.println("    -> Would you like to get total of some filtered expense?(Y/N)");
             String yesOrNo = reader.readLine().toLowerCase();
             if (yesOrNo.equals("y")){
 
@@ -203,5 +205,20 @@ public class Main {
         }
     }
 
+    // afisarea zilei cu cea mai mare cheltuiala pt o anume categorie
+    private static String dayWithTheBiggestExpense() throws IOException {
+        String expenseType = getExpenseTypeFromInput();
+        OptionalInt valueMaximum = expenseList.stream()
+                .filter(expense -> expense.getType().equals(expenseType))
+                .mapToInt(item -> item.getCost()).max();
 
+        SimpleDateFormat formatter;
+        for(Expense expense: expenseList){
+            if (expense.getCost() == valueMaximum.getAsInt()){
+               return expense.getDate().toString() + "\t-> Expense: " + expense.getCost();
+
+            }
+        }
+        return null;
+    }
 }
