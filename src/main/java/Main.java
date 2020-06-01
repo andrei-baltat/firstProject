@@ -7,9 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import model.Expense;
 import model.User;
 import util.ExpenseTypes;
@@ -91,19 +89,6 @@ public class Main {
 
         String type = getExpenseTypeFromInput();
 
-        // verifica aici. Nu e mai eficient daca punem valoarea corecta o data si nu cea gresita la fiecare evaluare?
-//        while (true){
-//            type = reader.readLine();
-//            if(!type.equals(ExpenseTypes.FOOD) && !type.equals(ExpenseTypes.INTERNET)
-//            && !type.equals(ExpenseTypes.OTHER) && !type.equals(ExpenseTypes.TRANSPORT)
-//            && !type.equals(ExpenseTypes.UTILITIES)){
-//                System.out.println("Insert correct type of expense");
-//            } else {
-//                break;
-//            }
-//
-//        }
-
         System.out.print("Write a comment: ");
         String comment = reader.readLine();
 
@@ -130,17 +115,17 @@ public class Main {
     }
 
     private static Integer choiceOfFiltering() throws IOException {
-        System.out.println("    -> Would you like to filter?(Y/N)");
+//        System.out.println("    -> Would you like to filter?(Y/N)");
         boolean flag = true;
 
         while (flag){
-            if (reader.readLine().toLowerCase().equals("y")){
+            System.out.println("    -> Would you like to filter?(Y/N)");
+            String yesOrNo = reader.readLine().toLowerCase();
+            if (yesOrNo.equals("y")){
 
                 System.out.println("    -> 1 or equal or =");
                 System.out.println("    -> 2 or less or <");
                 System.out.println("    -> 3 or bigger or >");
-
-
 
                 while (true){
                     String choice = reader.readLine();
@@ -175,14 +160,15 @@ public class Main {
                                 .mapToInt(item -> item.getCost()).sum();
 
                     }
+                    System.out.println("Incorrect input. Found: " + choice + ".Try again");
                 }
             }
 
-            if (reader.readLine().toLowerCase().equals("n")){
+            if (yesOrNo.equals("n")){
                 return expenseList.stream().mapToInt(item -> item.getCost()).sum();
             }
 
-            System.out.println("Incorrect input. Found" + reader.readLine());
+            System.out.println("Incorrect input. Found: " + yesOrNo + ".Try again");
         }
 
         return null;
