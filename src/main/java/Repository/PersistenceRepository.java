@@ -6,7 +6,6 @@ import model.User;
 
 public interface PersistenceRepository {
 
-    List<User> readAll();
     List<Expense> getExpensesForUser(String userName);
     void write(User user);
 

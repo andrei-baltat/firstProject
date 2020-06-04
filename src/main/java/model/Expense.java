@@ -1,10 +1,14 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 public class Expense {
+    private int id;
     private Date date;
     private int cost;
+    @JsonIgnore
+    private int userId;
     private String type;
     private String comment;
 
@@ -15,6 +19,31 @@ public class Expense {
         this.cost = cost;
         this.type = type;
         this.comment = comment;
+    }
+
+    public Expense(final int id, final Date date, final int cost, final String type, final String comment, int userId) {
+        this.id = id;
+        this.date = date;
+        this.cost = cost;
+        this.type = type;
+        this.comment = comment;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(final int userId) {
+        this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
     }
 
     public Date getDate() {

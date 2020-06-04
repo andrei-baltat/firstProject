@@ -11,8 +11,7 @@ import model.User;
 
 public class JsonRepository implements PersistenceRepository {
 
-    @Override
-    public List<User> readAll() {
+    private List<User> readAll() {
         ObjectMapper mapper = new ObjectMapper();
 
         try {

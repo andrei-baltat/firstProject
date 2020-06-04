@@ -1,3 +1,4 @@
+import Repository.DbRepository;
 import Repository.JsonRepository;
 import Repository.PersistenceRepository;
 import java.io.BufferedReader;
@@ -18,6 +19,8 @@ public class Main {
     public static List<Expense> expenseList;
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private static PersistenceRepository persistence = new JsonRepository();
+//    private static PersistenceRepository persistence = new DbRepository();
+
 
     public static void main(String[] args) throws IOException {
         System.out.print("Log in with username: ");
@@ -28,6 +31,7 @@ public class Main {
             expenseList = new ArrayList<>();
         }
         System.out.println(expenseList);
+
 
         boolean continueWhile = true;
         while(continueWhile) {
@@ -49,8 +53,8 @@ public class Main {
                     break;
 
                 case 3:
-//                    System.out.println("Total: " + totalWithFilter().intValue());
-                    System.out.println(dayWithTheBiggestExpense());
+                    System.out.println("Total: " + totalWithFilter().intValue());
+//                    System.out.println(dayWithTheBiggestExpense());
                     break;
                 case 9:
                     User user = new User(username, expenseList);
@@ -116,7 +120,7 @@ public class Main {
         return date;
     }
 
-    // totalul unor proprietati cu anumite valori
+    // totalul unor proprietati cu valori < > sau == cu x
     private static Integer totalWithFilter() throws IOException {
         boolean flag = true;
 
@@ -221,4 +225,6 @@ public class Main {
         }
         return null;
     }
+
+
 }
